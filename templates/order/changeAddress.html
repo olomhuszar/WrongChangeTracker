@@ -1,27 +1,27 @@
 <div style="margin:30px;">
     <img src="img/changeAddress.png">
-    <div style="height:80px;"></div>
-    <div id="labelNote">Ide kérem a taxit</div>
-    <table id="modifyAddress">
-        <tr>
+    <div style="height:30px;"></div>
+    <div id="labelNote" style="font-size:30px;">Ide kérem a taxit</div>
+    <table id="modifyAddress" style="height:80px;">
+        <tr style="height:40px;">
             <td class="firstColumn">
-                <input type="text" name="addressCity" placeholder="Város" value="Budapest" />
+                <input type="text" name="addressCity" class="noborder" placeholder="Város" value="Budapest" />
             </td>
             <td class="secondColumn">
-                <input type="text" name="addressDistrict" placeholder="Kerület" value="XII." />
+                <input type="text" name="addressDistrict" class="noborder" placeholder="Kerület" value="XII." />
             </td>
         </tr>
-        <tr>
+        <tr style="height:40px;">
             <td class="firstColumn">
-                <input type="text" name="addressRoad" placeholder="Utca" value="Eotvos ut" />
+                <input type="text" name="addressRoad" class="noborder" placeholder="Utca" value="Eotvos ut" />
             </td>
             <td class="secondColumn">
-                <input type="text" name="addressNumber" placeholder="Házszám" value="35" />
+                <input type="text" name="addressNumber" class="noborder" placeholder="Házszám" value="35" />
             </td>
         </tr>
     </table>
     <button data-theme="a" id="addressChangeSubmit">OK</button>
-    <div id="labelNote">Korábbi rendeléseim</div>
+    <div id="labelNote" style="font-size:30px;">Korábbi rendeléseim</div>
 </div>
 <table id="prevAddresses">
     <tr><td class="iterColumn"></td><td class="addressColumn"></td></tr>

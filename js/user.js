@@ -93,7 +93,7 @@ $("body").on("templateChange", function (a, b) {
 			showHeader();
 			hideSpinner();
 			showNav();
-			changeTitle('A taxid megérkezett');
+			changeTitle('A taxis értékelése');
 			changeIcon('carPeople');
 			app.backToTemplate = 'order/main';
 			changeIcon("medal");
@@ -132,7 +132,7 @@ $("body").on("templateChange", function (a, b) {
 			console.log(app.rateId);
 			if (app.rateId == false) {
 				console.log('K, im here');
-				changeTitle('A taxid megérkezett');
+				changeTitle('A taxis értékelése');
 				changeName(app.taxiDatas[app.currentTaxiId].name);
 				changeDate(getCurrentDate(), getCurrentDay());
 				changeDestination(app.street, app.city);
@@ -291,11 +291,11 @@ var	fillDetailedRating = function ( ) {
 		}
 	}
 	if( a.headImg != null ) {
-		headImg = a.headImg;
+		headImg = app.imgPath + a.headImg;
 		$('img#bigDriverHead').attr('src',headImg);
 	}
 	if( a.companyImg != null ) {
-		companyImg = a.companyImg;
+		companyImg = app.imgPath + a.companyImg;
 		$('div#taxi img').attr('src',companyImg).css('width','45px').css('height', '45px');
 	}
 	var c = a.others.speedRating,
@@ -357,10 +357,10 @@ var	fillDriverRows = function (a) {
 		headImg = 'img/70/bigUnknownHead.png';
 		companyImg = 'img/70/unknownBarTaxi.png';
 		if( c[d].headImg != null ) {
-			headImg = c[d].headImg;
+			headImg = app.imgPath + c[d].headImg;
 		}
 		if( c[d].companyImg != null ) {
-			companyImg = c[d].companyImg;
+			companyImg = app.imgPath + c[d].companyImg;
 		}
 		b += '<tr id="' + c[d].id + '" class="ratingRow">';
 		b += '<td style="padding-left:10px;width:50%;text-align:left;"><img style="width:45px;height:45px;" src="'+headImg+'"> <span>' + c[d].name + "</span></td>";

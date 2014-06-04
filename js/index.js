@@ -12,6 +12,7 @@ var app = {
     currentTaxiId: false,
     serverUrl: 'http://getspot.hu/mobileApp/client/',
     gMapsJs: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCNaLcBKhyLsjKy0v5ppcLt-pebCRp-m4Y&sensor=true',
+    imgPath: 'http://getspot.hu',
     gmapsLoaded: false,
     currentTemplate: false,
     mapHeight: false,
@@ -19,6 +20,7 @@ var app = {
     watchId: false,
     locationRefresh: 15,
     currentMessageType: false,
+    maxTimeout: 35000,
     flowState: 'idle',
     polling: false,
     pollFrequency: 4,
@@ -26,6 +28,8 @@ var app = {
     street: false,
     serverAccess: false,
     orderedIt: 0, 
+    canceledTaxies: [],
+    timeoutedTaxies: [],
     orderOptions: {
         passengerCount: 1,
         luggage: 'none',
@@ -64,18 +68,6 @@ var app = {
     },
     onOnline: function(e){
         app.receivedEvent('online');
-        if(app.gmapsLoaded == false) {
-            app.gmapsLoaded = true;
-            jQuery.ajax({
-                url: app.gMapsJs,
-                dataType: 'script',
-                error: function(){
-                console.log("couldnt download google api error");
-                changeContent('offline');
-                showAlert('Az alkalmazás használatához internet kapcsolat szükséges!');
-                }
-            });    
-        }
     },
     onBackButton: function(e) {
         app.receivedEvent('backbutton');
@@ -112,19 +104,12 @@ var app = {
         e.preventDefault();
         $("#appMenu").show();
     },
-    onDeviceReady: function() {/*
+    onDeviceReady: function() {
+        /*
         navigator.splashscreen.show();
         checkConnection();
-        console.log("source: " + app.gMapsJs);
-        jQuery.ajax({
-            url: app.gMapsJs,
-            error: function(){
-            console.log("couldnt download google api error");
-            changeContent('offline');
-            showAlert('Az alkalmazás használatához internet kapcsolat szükséges!');
-            }
-        });
-        navigator.splashscreen.hide();*/
+        navigator.splashscreen.hide();
+        */
         var options = { timeout: 1000 * app.locationRefresh , enableHighAccuracy: true, maximumAge: Infinity};
         app.watchId = navigator.geolocation.watchPosition(positionReady, onLocationError, options);
         app.receivedEvent('deviceready');

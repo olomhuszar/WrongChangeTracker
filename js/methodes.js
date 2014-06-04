@@ -155,21 +155,28 @@ function setDriverInfo( name, license, car ) {
 	$('#detail #driver').html(innerHtml);
 }
 function setRouteInfo(meter, minute, rating) {
-	var innerHtml = '<div id="routeDistance">'+meter+'m<br />'+minute+' perc</div><div id="routeRating">'+rating+'<br /><div id="overallRating"></div></div>';
+	var innerHtml = '<div id="routeDistance">'+meter+'m<br />'+minute+' perc</div><div id="routeRating">'+String(rating).replace(/\./g, ',')+'<br /><div id="overallRating"></div></div>';
 	$('#detail #route').html(innerHtml);
 	$('#overallRating').raty({ score: rating, readOnly: true, size: 20,width:130, starOff: 'star-off-small.png',  starOn : 'star-on-small.png',starHalf: 'star-half-small.png'});
 }
 
 function setInverseDetails( name, license, car, rating) {
-	var innerHtml = '<div id="name"><span id="taxiName">'+name+'</span></div><div id="carData"><span id="taxiLicensePlate">'+license+'</span><br /><span id="taxiCarType">'+car+'</span></div><div id="routeRate">'+rating+'</div><div id="inverseRating"></div>';
+	var innerHtml = '<div id="name"><span id="taxiName">'+name+'</span></div><div id="carData"><span id="taxiLicensePlate">'+license+'</span><br /><span id="taxiCarType">'+car+'</span></div><div id="routeRate">'+String(rating).replace(/\./g, ',')+'</div><div id="inverseRating"></div>';
 	$('#inverseDetails').html(innerHtml);
-	$('#inverseRating').raty({ score: parseInt(rating), readOnly: true, size: 20,width:130, starOff  : 'star-off-small.png',  starOn   : 'star-on-small-inverse.png', starHalf: 'star-half-small-inverse.png'});
+ 	$('#inverseRating').raty({ score: parseInt(rating), readOnly: true, size: 20,width:130, starOff  : 'star-off-small.png',  starOn   : 'star-on-small-inverse.png', starHalf: 'star-half-small-inverse.png'});
 }
 
 function updateMap() {
 	var height = app.mapHeight;
 	if( height == false ) {
-		return;
+		var screenSize 	= $(window).height();console.log('screenSize is : ' + screenSize)
+		var headerSize 	= $('div[data-role="header"]').height();console.log('headerSize is : ' + headerSize)
+		var addressSize = $('#mapPosition').height();console.log('addressSize is : ' + addressSize)
+		var prefSize    = $('#preferences').height();console.log('prefSize is : ' + prefSize)
+		var callSize    = $('#fastestProvider').height();console.log('callSize is : ' + callSize)
+		var mapSize     = screenSize-(headerSize+addressSize+prefSize+callSize);
+		if(mapSize>600) mapSize = 600;
+		app.mapHeight = mapSize;
 	}
 	var width = $(window).width();
 	var lat = app.position.lat;

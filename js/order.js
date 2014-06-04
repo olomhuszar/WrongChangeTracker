@@ -39,9 +39,13 @@ var taxiArrivedSuccess = function( ) {
 };
 var taxiComing = function( ) {
 	var data = app.taxiDatas[app.currentTaxiId];
+	var dur = data.durationValue;
+	if( dur < 10 ) {
+		dur = 10;
+	}
 	var oldDateObj = new Date();
 	var newDateObj = new Date();
-	newDateObj.setTime(oldDateObj.getTime() + (data.durationValue*1000));
+	newDateObj.setTime(oldDateObj.getTime() + (dur*1000));
 	console.log(newDateObj.getTime() + ' is the new time');
 	console.log(oldDateObj.getTime() + ' is the old time');
 	$('#timer').countdown(newDateObj, function(event) {
@@ -157,21 +161,30 @@ var drawTaxies = function( ) {
 	var items = '';
 	var headImg = 'img/70/unknownHead.png';
 	var companyImg = 'img/70/unknownTaxi.png';
-
+	$('.orderFastest').css('border-bottom','solid #e31b43 2px');
 	if( count == 0) {
         items = '<tr><td colspan="5">Jelenleg nincs elérhető taxis, kérjük próbálkozzon később</td></tr>';
 	} else {
 		for( var i = 0; i < count; i++) {
 			id = data[i].id;
 			app.taxiDatas[id] = data[i];
+			timeout = app.timeoutedTaxies[id];
+			cancel  = app.canceledTaxies[id];
 			if( data[i].headImg != null ) {
-				headImg = data[i].headImg;
+				headImg = app.imgPath + data[i].headImg;
 			}
 			if( data[i].companyImg != null ) {
-				companyImg = data[i].companyImg;
+				companyImg = app.imgPath + data[i].companyImg;
+			}
+			var error = '';
+			if( timeout ) {
+				error = '<img src="img/70/timedout.png" style="width:22px;height:22px;" />';
+			}
+			if( cancel ) {
+				error = '<img src="img/70/canceled.png" style="width:22px;height:22px;" />';
 			}
 			items = items + '<tr onclick="viewDetails('+id+')">';
-		    items = items + '<td><img src="'+ headImg +'"> <span>'+data[i].name+'</span></td>';
+		    items = items + '<td style="text-align:left; padding-left:12px;"><table><tr><td><img src="'+ headImg +'"></td><td style="padding-left:15px;" ><span style="font-size:20px;">'+data[i].name+'</span></td><td>'+error+'</td></tr></table></td>';
 		    items = items + '<td><img src="'+ companyImg +'"></td>';
 		    items = items + '<td>';
 	            if( data[i].favorite == '1' ) {
@@ -187,7 +200,8 @@ var drawTaxies = function( ) {
 		    	items = items + '    <div id="duration">'+Math.round(data[i].distance*3)+' perc</div>';
 		    }
 		    items = items + '</td>';
-		    items = items + '<td id="rating">'+Math.round(data[i].rating*10)/10+'</td>';
+		    var roundedRating = Math.round(data[i].rating*10)/10;
+		    items = items + '<td id="rating" style="font-size: 30px;font-weight: bold;">'+String(roundedRating).replace(/\./g, ',')+'</td>';
 		    items = items + '</tr>';
 		}
 	}
@@ -253,6 +267,7 @@ var sendRating = function() {
 };
 var checkTimeout = function(){
 	if( app.flowState == 'order' ) {
+		app.timeoutedTaxies[app.allResult.data[app.orderedIt].id] = true;
 		if(app.orderedIt > 0) {
 			if( app.orderedIt >= app.allResult.count ) {
 				driverTimeout();
@@ -275,6 +290,8 @@ var sendRequest = function( type, opt) {
 	switch(type) {
 		case 'order':
 			app.flowState = 'order';
+			app.canceledTaxies[app.currentTaxiId] = false;
+			app.timeoutedTaxies[app.currentTaxiId] = false;
 			url = 'clientAction.php';
 			datas.passengerCount = app.orderOptions.passengerCount;
 			datas.luggage = app.orderOptions.luggage;
@@ -293,7 +310,7 @@ var sendRequest = function( type, opt) {
 			setTimeout(function(){
 				app.polling = true;
 			},500);
-			setTimeout(checkTimeout, 45000);
+			setTimeout(checkTimeout, app.maxTimeout);
 			break;
 		case 'cancel':
 			app.orderedIt = 0;
@@ -337,6 +354,7 @@ var actionController = function (message) {
 		} else {
 			driverCancelSuccess();	
 		}
+    	app.canceledTaxies[app.currentTaxiId] = true;
 		app.currentTaxiId = false;
 	}
 	else if (message.type == 'arrived') {

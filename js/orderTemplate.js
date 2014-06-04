@@ -9,6 +9,9 @@ $('body').on('templateChange',function(event, file) {
 			showSpinner();
 			showNav();
 			changeTitle('Helyszín módosítása');
+			var corr = $('#addressChangeSubmit').css('width');
+			$('#addressChangeSubmit').css('width','140px').css('margin','20px auto 0 auto');
+			$('.noborder').css('border','none');
 			changeIcon('map');
 			app.backToTemplate = 'order/main';
 			break;
@@ -33,7 +36,7 @@ $('body').on('templateChange',function(event, file) {
 			hideSpinner();
 			showBack();
 			changeTitle('Taxis részletező');
-			changeIcon('people');
+			changeIcon('head');
 			app.backToTemplate = 'order/chooseProvider';
 			break;
 		case 'order/taxiComing':
@@ -144,11 +147,11 @@ var getDetailedTaxi = function() {
 	var companyImg = 'img/70/unknownBarTaxi';
 	loopObject(app.taxiDatas[id]);
 	if( app.taxiDatas[id].headImg != null ) {
-		headImg = app.taxiDatas[id].headImg;
+		headImg = app.imgPath + app.taxiDatas[id].headImg;
 		$('img#bigDriverHead').attr('src',headImg);
 	}
 	if( app.taxiDatas[id].companyImg != null ) {
-		companyImg = app.taxiDatas[id].companyImg;
+		companyImg = app.imgPath + app.taxiDatas[id].companyImg;
 		$('div#taxi img').attr('src',companyImg).css('width','45px').css('height', '45px');
 	}
 	$('#taxiName').html(app.taxiDatas[id].name);
@@ -180,8 +183,9 @@ var showMessage = function() {
 };
 var fillPrevAddresses = function() {
 	rows = '';
+	if( app.prevRoutes == false )	return;
 	for( var i = 0; i < app.prevRoutes.length; i++) {
 		rows = rows + '<tr id="'+i+'" class="prevAddressRow"><td class="iterColumn">' + (parseInt(i)+1) + '</td><td class="addressColumn">' + app.prevRoutes[i].city + ', ' + app.prevRoutes[i].street + '</td></tr>';
 	}	
 	$('#prevAddresses').html(rows);
-}
+};
