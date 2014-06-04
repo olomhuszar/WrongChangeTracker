@@ -1,0 +1,784 @@
+@font-face {
+    font-family: 'RobotoLight';
+    src: url('Roboto-Light.ttf');
+}
+* {
+    font-family: 'RobotoLight' !important;
+}
+html {
+    height: 750px;
+}
+div {
+    text-align: center;
+}
+.ui-btn,label.ui-btn {
+    font-weight: normal;
+ }
+ .ui-input-text {
+    height:40px;
+    margin: 20px 0 20px 0 !important;
+ }
+ .ui-checkbox {
+    width:215px !important;
+    margin: 0 auto !important;
+ }
+ a {
+    text-decoration: none;
+    font-weight: normal !important;
+ }
+ a.guestLogin {
+    font-size: 24px;
+ }
+ div#header {
+    height: 65px;
+ }
+ div#action h1{
+   font-size: 26px;
+   margin: 0 28px 0 0;
+   padding: 0;
+   font-weight: lighter;
+ }
+ div#action {
+    position: absolute;
+    left:77px;
+    top:15px;
+ }
+ div#spinner {
+    margin:-15px 0 0 0 ;
+    padding: 0;
+ }
+ div#actionBar {
+    position: relative;
+    height: 65px;
+    border-bottom: 2px solid #bf1639;
+ }
+ div#nav {
+    position: absolute;
+    left:0;
+    top:21px;
+ }
+ div#icon {
+    position: absolute;
+    left:28px;
+    line-height: 60px;
+ }
+div#icon img {
+    vertical-align: middle;
+ }
+div#spinner {
+    position: absolute;
+    right:0px;
+}
+div#rightIcon {
+    position: absolute;
+    top:11px;
+    right:14px;
+}
+div#count {
+    position: absolute;
+    right:2px;
+    top:0px;
+    width: 14px;
+}
+div#mapPosition {
+    height: 66px;
+    width: 60%;
+    float:left;
+}
+div#mapPosition div#street {
+    font-size: 26px;
+    font-weight: normal !important;
+}
+div#mapPosition div#city {
+    font-size: 20px;   
+    font-weight: normal !important;
+}
+div#changePosition {
+    font-weight: normal !important;
+    height: 58px;
+    width: 40%;
+    float:right;
+    font-size: 28px;
+    border-left: 2px #262626 solid;
+    margin: 0 -2px 0 0;
+    padding: 8px 0 0 0;
+    line-height: 26px;
+}
+table#preferences {
+    width: 100%;
+}
+table#preferences tr td {
+    width:21%;
+    height: 100px;
+}
+td#description {
+    width: 35%;
+    font-size: 26px;
+    text-align: right;
+}
+div#passengerCount {
+    color:#e31b43;
+    font-size: 63px;
+    font-weight: bold;
+}
+div#mapCanvas {
+    height:170px;
+    width: 100%;
+    margin: 0 auto 0 auto;
+    text-align: center;
+    vertical-align: middle;
+}
+div[data-role="header"] {
+    display: none;
+}
+input {
+    color: #999 !important;
+}
+h1#hello {
+    font-size: 90px;
+    margin: 0.5em 0  0 0;
+}
+h2 {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+p#changeCheck {
+cursor: pointer;
+line-height: 42px;
+}
+p#changeCheck img {
+vertical-align: middle;
+}
+div#labelNote {
+    text-align: center;
+    font-size: 18px;
+}
+table#modifyAddress {
+    width:100%;
+}
+:-webkit-input-placeholder {
+   text-align:center;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-align:center;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-align:center;  
+}
+
+:-ms-input-placeholder {  
+   text-align:center; 
+}
+td {
+    height:53px;
+}
+td.firstColumn {
+    background: url('../img/70/bottomBorderBig.png') no-repeat center bottom; 
+}
+td.secondColumn {
+    background: url('../img/70/bottomBorderSmall.png') no-repeat center bottom; 
+}
+
+div#fastestProvider {
+    width: 50%;
+    float:left;
+    background:#303030;
+    text-align: center;
+    height: 85px;
+    padding-top:15px;
+}
+div#chooseProviderButton {
+    width: 50%;
+    float:right;
+    background:#303030;
+    border-left: 2px #262626 solid;
+    margin: 0 -2px 0 0;
+    text-align: center;
+    height: 85px;
+    padding-top:15px;
+}
+button.orderFastest {
+    border-bottom: 2px solid #e31b43;
+    font-size: 29px;
+    vertical-align: middle;
+}
+table {
+    width:100%;
+    border:none;
+    border-spacing: 0;
+}
+thead {
+    background: #e31b43;
+}
+tr {
+    height: 70px;
+}
+th {
+    width: 14%;
+}
+th#name {
+    width:44%;
+    text-align: left;
+    padding: 0 0 0 5%;
+    color: #fff;
+    vertical-align: middle;
+}
+table#chooseProvider tbody td img, table#chooseProvider thead th img {
+    width:45px;
+    height:45px;
+    vertical-align: middle;
+}
+td#rating {
+    font-size: 26px;
+    font-weight: bold;
+}
+tbody#taxies tr td {
+    height: 100px;
+    vertical-align: middle;
+    font-size: 20px;
+}
+tbody#taxies tr td span {
+    margin-top: -20px;
+}
+
+table#chooseProvider tbody tr {
+    background:#333;
+    border-top: 2px solid #262626;
+}
+table#chooseProvider {
+   border-collapse:collapse;
+}
+div#appMenu {
+    height: 70px;
+    width: 100%;
+    background: #555;
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    vertical-align: middle;
+}
+div#signOut {
+    float:left;
+    width:32%;
+    line-height: 70px;
+}
+div#exitApp {
+    float:left;
+    width:32%;
+    line-height: 70px;
+    border-left:1px solid #ddd;
+    border-right:1px solid #ddd;
+}
+div#hideMenu {
+    float:right;
+    width:32%;
+    line-height: 70px;
+}
+
+div#spinnerOptions {
+    z-index: 10;
+    position: absolute;
+    width: 240px;
+    left:20px;
+    font-weight: normal;
+    font-size: 20px;
+}
+div#spinnerOptions div {
+    z-index: 100;
+    height: 60px;
+    position: relative;
+    width: 100%;
+    line-height: 60px;
+    vertical-align: middle;
+}
+div#chooseDistance {
+    background: #bf1639;  
+}
+div#chooseRating {
+    background: #e31b43;
+}
+div#chooseTaxi {
+    background: #bf1639;
+}
+div#chooseFavorite {
+    background: #e31b43;
+}
+img#bigDriverHead {
+    margin: 40px auto 15px auto;
+}
+div#name {
+    font-size: 25px;
+}
+div#carData {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+div#descriptionBar {
+    background: #e31b43;
+    width: 100%;
+    height:60px;
+    vertical-align: middle;
+}
+div#descriptionBar div {
+    margin-top: 7px;
+    float:left;
+    table-layout: fixed;
+    display: block;
+    vertical-align: middle;
+    width: 25%;
+    color:#fff;
+    font-size: 18px;
+}
+div#taxi  img{
+    margin: 4px 0 0 0;
+}
+div#ratings {
+    margin: 20px auto 0px auto;
+    width:395px;
+}
+div#ratings > table > tbody > tr > td:nth-child(1) {
+    text-align: right;
+    margin-right: 20px;
+    font-size: 20px;
+}
+div#callDriver {
+    height: 60px;
+    width: 50%;
+    float:left;
+    line-height: 60px;
+
+}
+div#acceptDriver {
+    width: 50%;
+    height:100%;
+    float: right;
+    margin-left:-2px;
+    border-left: 2px solid #575757;
+    line-height: 60px;
+}
+#callDriver > img, #acceptDriver > img {
+    vertical-align: middle;
+}
+div#detailActions {
+    height: 60px;
+    width: 100%;
+    background: #303030;
+    cursor: pointer;
+    position: fixed;
+    bottom: 0;
+    z-index: 10;
+}
+
+#overlay {
+    width: 76%;
+    height: 93%;
+    background-color: #303030;
+    position: absolute;
+    top:3%;
+    left:12%;
+    z-index: 1000;
+}
+#overlay #message {
+    font-size: 20px;
+    margin: 10% 16%;
+}
+#alertImage img {
+    height: 200px;
+    width: 200px;
+}
+#overlay #button {
+    height: 10%;
+    position: absolute;
+    bottom:0;
+    width:100%;
+    background-color: #e31b43;
+    margin:0;
+    padding: 0;
+}
+#overlay #button button {
+    height: 100%;
+    border:none;
+}
+#detail {
+    position: absolute;
+    bottom:30%;
+    width: 100%;
+    height: 30%;
+    background-color: #3e3e3d;
+}
+#driver {
+    background-color: #3e3e3d;
+    height: 40%;
+    margin-top:5%;
+    border-bottom: 1px solid #303030;
+}
+#route {
+    font-size: 26px;
+}
+#routeDistance {
+    position: absolute;
+    height: 60%;
+    width: 50%;
+    padding-top:6%;
+}
+#routeRating {
+    padding-top:10%;
+    position: absolute;
+    left:50%;
+    height: 60%;
+    width: 50%;
+    border-left: 1px solid #303030;
+}
+#overallRating {
+    margin-left:-35%;
+}
+
+#acceptedMessage {
+    font-size: 30px;
+    margin: 30px auto 0 auto;
+}
+#timer {
+    font-size: 120px;
+    color: #e31b43;
+    margin: 25px auto 20px;
+}
+#inverseDetails {
+    background: #e31b43;
+    width: 100%;
+    height: 20%;
+    color:#fff;
+    bottom:23%;
+    position: absolute;
+    padding-top: 2%;
+}
+#inverseRating {
+    margin-left:15%;
+}
+#actionRater {
+    left:0;
+    bottom: 0;
+    width: 100%;
+    height: 25%;
+    background-color: #303030;
+    position: absolute;
+}
+#skipRatingButtonAction {
+    width: 50%;
+    left: 50%;
+    float:left;
+    height: 100%;
+    margin-top: 5%;
+    line-height: 100%;
+}
+#actionRaterButton {
+    width: 50%;
+    left: 0;
+    float:left;
+    margin-top: 5%;
+    height: 100%;
+    line-height: 100%;
+}
+#acceptedActions #callDriver {
+    width: 33.3%;
+    left: 0;
+    float:left;
+    height: 100%;
+    line-height: 100%;
+    padding-top: 10%;
+}
+#acceptedActions #messageDriver {
+    width: 33.3%;
+    left: 33.3%;
+    margin-left: -1px;
+    border-left: 1px solid #262626;
+    float:left;
+    height: 100%;
+    padding-top: 10%;
+}
+#acceptedActions #cancelDriver {
+    width: 33.3%;
+    left: 66.6%;
+    bottom:0;
+    margin-left: -1px;
+    border-left: 1px solid #262626;
+    float:right;
+    height: 100%;
+    padding-top: 10%;
+}
+#acceptedActions {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 23%;
+    background: #303030;
+}
+
+#orderDetails {
+    width: 100%;
+    height: 52%;
+    background: #e31b43;
+    position:absolute;
+    bottom:23%;
+    margin-bottom: -5px;
+    color:#fff;
+    border-top:1px #e31b43 solid;
+}
+#orderDatas {
+    height: 38%;
+    background-color: #bf1639;
+    margin-bottom: 10%;
+}
+#orderCount{
+    width: 33.3%;
+    float:left;
+    height: 100%;
+}
+#orderLuggage{
+    width: 33.3%;
+    float:left;
+    border-left:1px #e31b43 solid;
+    border-right:1px #e31b43 solid;
+    margin-left: -2px;
+    height: 100%;
+}
+#orderPet{
+    width: 33.3%;
+    float:left;
+}
+div.label {
+    padding-top:10%;
+    font-size: 18px;
+}
+div.value {
+    font-size: 70px;
+}
+#reorderActions {
+    width: 100%;
+    bottom:0;
+    background:  #303030;
+    height: 15%;
+    padding-top: 9%;
+    position: absolute;
+}
+#acceptReorder {
+    float:left;
+    width: 50%;
+    height: 100%;
+}
+#cancelReorder {
+    float:left;
+    width: 50%;
+    height: 100%;
+}
+#acceptedMessage {
+    margin: 30px 40px;
+}
+#question {
+    font-size: 20px;
+    margin: 10px auto;
+}
+
+#rateMessage {
+    margin: 20px 120px 0px 120px;
+    font-size: 20px;
+}
+
+.ratingDescription {
+    text-align: right;
+    width: 35%;
+    padding-right: 20px;
+}
+.ratingValue {
+    text-align: left;
+    color: #e31b43;
+    width: 65%;
+}
+tbody#ratings tr {
+    height: 30px;
+}
+tr.greater {
+    height: 50px !important;
+}
+div#classify {
+    margin: 15px auto 0 auto;
+}
+table#rating {
+    margin-top: 8px;
+}
+tr#ratingDefinition {
+    background: #e31b43;
+}
+tr.ratingValues {
+    background: #303030;
+    border-top: 1px solid #262626;
+}
+.delete {
+    background:#e31b43;
+    border-top: 1px solid #303030;
+    color:#fff;
+}
+div#settingsBar {
+    position: absolute;
+    top:70px;
+    left: 0;
+    width: 260px;
+    background-color: #e31b43;
+    height: 100%;
+}
+div#settingsBar div {
+    background-color: #bf1639;
+    border-top: 1px solid #e31b43;
+    height: 50px;
+    line-height: 50px;
+    width: 230px;
+    vertical-align: middle;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 30px;
+}
+div#settingsBar div img {
+    width: 35px;
+    vertical-align: middle;
+}
+div#settingsBar div span {
+    vertical-align: middle;
+    line-height: 50px;
+    margin-left: 20px;
+    color: #fff;
+}
+td * {
+    vertical-align: middle;
+}
+th * {
+    vertical-align: middle;
+}
+div.choosen {
+    border-bottom: 3px solid #e31b43;
+}
+
+div#ratingChooser {
+    height: 60px;
+    width: 100%;
+    background: #303030;
+    cursor: pointer;
+}
+div#myRating {
+    height: 60px;
+    width: 50%;
+    float:left;
+    line-height: 60px;
+}
+div#othersRating {
+    width: 50%;
+    height:100%;
+    float: right;
+    margin-left:-2px;
+    border-left: 2px solid #575757;
+    line-height: 60px;
+}
+hr#magic {
+    color: #262626;
+    background-color: #262626;
+    border:0;
+    height: 5px;
+}
+.overlay {
+    width: 76%;
+    height: 91%;
+    background-color: #303030;
+    position: absolute;
+    top:2%;
+    left:12%;
+    z-index: 1000;
+}
+.overlay #message {
+    font-size: 20px;
+    margin: 10% 16%;
+}
+.overlay #button {
+    height: 10%;
+    position: absolute;
+    bottom:0;
+    width:100%;
+    background-color: #e31b43;
+    margin:0;
+    padding: 0;
+}
+.overlay #button button {
+    height: 100%;
+    border:none;
+}
+
+#messageModule #head {
+    background: #3e3e3d;
+    width: 100%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    vertical-align: middle;
+    color:#fff;
+}
+
+#messageModule {
+    width: 76%;
+    height: 93%;
+    background-color: #303030;
+    position: absolute;
+    top:3%;
+    left:12%;
+    z-index: 1000;
+}
+#messageModule button#messageOk {
+    height: 20%;
+    position: absolute;
+    bottom:0;
+    width:100%;
+    margin:0;
+    padding: 0;
+}
+#messageModule button.sendMessage {
+    width: 10;
+}
+span.sendMessage {
+    position: absolute;
+    right: 3%;
+    top:15%;
+    width: 34px;
+    height: 34px;
+}
+textarea#myMessage {
+    margin: 0 !important;
+    width: 75%;
+    height: 20%;
+    background: #3e3e3d;
+    font-size: 20px;
+    border-bottom: 1px solid #e31b43;
+}
+#messageArea {
+    position: absolute;
+    bottom:20%;
+    width:100%;
+    margin:0;
+    padding: 0;    
+    background: #3e3e3d;
+}
+#recivedMessage {
+    margin: 15%;
+    font-size: 24px;
+}
+p.fromTaxi {
+    color: #e31b43;
+}
+div#alert {
+    position: absolute;
+    z-index: 10;
+    width: 400px;
+    height: 50px;
+    background: #3c3c3c;
+    left:50%;
+    margin:0 0 0 -200px;
+    padding: 20px 0 0 0;
+    color: #f77992;
+    display: none;
+}

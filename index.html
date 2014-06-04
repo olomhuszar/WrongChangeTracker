@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densityDpi=device-dpi" /> 
+        <link rel="stylesheet" href="themes/spot.min.css" />
+        <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.1.min.css" />
+        <link rel="stylesheet" type="text/css" href="themes/index.css" />
+        <link rel="stylesheet" type="text/css" href="themes/customize.css" />
+        <title>Spot Utas</title>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="cordova_plugin.js"></script>
+    </head>
+    <body>
+        <div data-role="page" data-theme="a">
+            <div data-role="header" data-position="inline" style="display:none;">
+                <div id="actionBar">
+                    <div id="nav"><img src="img/70/nav.png"></div>
+                    <div id="icon"><img src="img/70/car.png"></div>
+                    <div id="action">
+                        <h1>Taxi rendelés</h1>
+                        <div id="spinner" style="display:none;" ><img src="img/70/spinner.png"></div>
+                    </div>
+                </div>
+                <div id="spinnerOptions" style="display:none;">
+                    <div id="chooseDistance">Távolság</div>
+                    <div id="chooseRating">Értékelés</div>
+                    <div id="chooseTaxi">Társaság</div>
+                    <div id="chooseFavorite">Kedvencek</div>
+                </div>
+                <div id="rightIcon"><img id='flag' src="img/70/emptyFlag.png">
+                    <div id="count">4</div>
+                </div>
+            </div>
+            <div id="alert">A megadott email formátuma nem megfelelő.</div>
+            <div id="settingsBar" style="display:none;">
+                <div id="chooseSettings"><img src="img/70/settingsIcon.png" /><span>Beállítások</span></div>
+                <div id="chooseFavoriteRate"><img src="img/70/heart.png" /><span>Kedvenc taxisok</span></div>
+                <div id="chooseBannedRate"><img src="img/70/bannedIcon.png" /><span>Kizárt taxisok</span></div>
+                <div id="choosePendingRate"><img src="img/70/medal.png" /><span>Függő értékelések</span></div>
+                <div id="chooseSignout"><img src="img/70/signOutIcon.png" style="height:35px;width:20px;margin-right:16px;" /><span>Kijelentkezés</span></div>
+            </div>
+            <div data-role="content" data-theme="a">
+                <div style="padding-top:30%;"><img src="img/loading.gif"></div>
+            </div>
+            <div id="appMenu" style="display:none;">
+                <div id="signOut">Kijelentkezés</div>
+                <div id="exitApp">Bezárás</div>
+                <div id="hideMenu">Vissza</div>
+            </div>
+            <div id="overlay" style="display:none;">
+                <div id="message"></div>
+                <div id="alertImage" ><img src="img/loading.gif" /></div>
+                <div id="detail" style="display:none;">
+                    <div id="driver">
+                        <div id="name"><span id="taxiName">Kovács József</span></div>
+                        <div id="carData"><span id="taxiLicensePlate">MLT-256</span><br /><span id="taxiCarType">Volkswagen Passat</span></div>
+                    </div>
+                    <div id="route">
+                        <div id="routeDistance">1000m<br />5 perc</div>
+                        <div id="routeRating">4,7<br /><div id="overallRating"></div></div>
+                    </div>
+                </div>
+                <div id="button">
+                    <button id="cancelOrder">Lemondom</button>                
+                    <button id="acceptMessage">OK</button>
+                    <button id="acceptAlert" style="display:none;">OK</button>
+                </div>
+            </div>
+            <div id="messageModule" class="overlay" style="display:none;">
+                <div id="head">Üzenet</div>
+                <div class="recivedMessage">
+                </div>
+                <div id="messageActions">
+                    <div id="messageArea">
+                        <textarea id="myMessage" placeholder="Üzenet az utasnak..."></textarea>
+                        <span class="sendMessage"><img src="img/70/sendMessage.png"></span>
+                    </div>
+                    <button id="messageOk">Ok</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery.mobile-1.4.1.min.js"></script>
+        <script src="js/sha1.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/methodes.js"></script>
+        <script type="text/javascript" src="js/auth.js"></script>
+        <script type="text/javascript" src="js/order.js"></script>
+        <script type="text/javascript" src="js/orderEventHandler.js"></script>
+        <script type="text/javascript" src="js/orderTemplate.js"></script>
+        <script type="text/javascript" src="js/user.js"></script>
+        <script type="text/javascript" src="js/jquery.raty.min.js"></script>
+        <script type="text/javascript" src="js/jquery.countdown.min.js" ></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>
