@@ -4,7 +4,7 @@
         <meta charset="utf-8" />
         <meta name="format-detection" content="telephone=no" />
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, target-densityDpi=device-dpi" /> 
+        <meta name="viewport" content="user-scalable=no, width=device-width, target-densityDpi=device-dpi" /> 
         <link rel="stylesheet" href="themes/spot.min.css" />
         <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
         <link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.1.min.css" />
@@ -13,6 +13,10 @@
         <title>Spot Utas</title>
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="cordova_plugin.js"></script>
+        <script src="js/jquery-1.10.2.min.js"></script>
+        <script src="js/jquery.mobile-1.4.1.min.js"></script>
+        <script src="js/sha1.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCNaLcBKhyLsjKy0v5ppcLt-pebCRp-m4Y&sensor=true"></script>
     </head>
     <body>
         <div data-role="page" data-theme="a">
@@ -32,7 +36,7 @@
                     <div id="chooseFavorite">Kedvencek</div>
                 </div>
                 <div id="rightIcon"><img id='flag' src="img/70/emptyFlag.png">
-                    <div id="count">4</div>
+                    <div id="count">?</div>
                 </div>
             </div>
             <div id="alert">A megadott email formátuma nem megfelelő.</div>
@@ -84,9 +88,6 @@
             </div>
         </div>
 
-        <script src="js/jquery-1.10.2.min.js"></script>
-        <script src="js/jquery.mobile-1.4.1.min.js"></script>
-        <script src="js/sha1.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/methodes.js"></script>
         <script type="text/javascript" src="js/auth.js"></script>

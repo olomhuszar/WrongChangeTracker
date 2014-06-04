@@ -99,38 +99,34 @@ $("body").on("templateChange", function (a, b) {
 			changeIcon("medal");
 			$("#speedDo").raty({
 				score: 0,
-				size: 10,
-				starOff: "star-off-small.png",
-				starOn: "star-on-small.png",
-				starHalf: 'star-half-small.png',
-				width: "180px",
+				size: 45,
+				starOff: "star-off-semi.png",
+				starOn: "star-on-semi.png",
+				starHalf: 'star-half-semi.png',
 				click: ratyClick
 			});
 			$("#comfortDo").raty({
 				score: 0,
-				size: 10,
-				starOff: "star-off-small.png",
-				starOn: "star-on-small.png",
-				starHalf: 'star-half-small.png',
-				width: "180px",
+				size: 45,
+				starOff: "star-off-semi.png",
+				starOn: "star-on-semi.png",
+				starHalf: 'star-half-semi.png',
 				click: ratyClick
 			});
 			$("#cleannessDo").raty({
 				score: 0,
-				size: 10,
-				starOff: "star-off-small.png",
-				starOn: "star-on-small.png",
-				starHalf: 'star-half-small.png',
-				width: "180px",
+				size: 45,
+				starOff: "star-off-semi.png",
+				starOn: "star-on-semi.png",
+				starHalf: 'star-half-semi.png',
 				click: ratyClick
 			});
 			$("#politenessDo").raty({
 				score: 0,
-				size: 10,
-				starOff: "star-off-small.png",
-				starOn: "star-on-small.png",
-				starHalf: 'star-half-small.png',
-				width: "180px",
+				size: 45,
+				starOff: "star-off-semi.png",
+				starOn: "star-on-semi.png",
+				starHalf: 'star-half-semi.png',
 				click: ratyClick
 			});
 			console.log(app.rateId);
@@ -272,6 +268,7 @@ $("body").on("click", "#choosePendingRate", function () {
 $("body").on("click", "#chooseSignout", function () {
 		app.token = !1;
 		window.localStorage.setItem("token", app.token);
+		console.log("Innen user choosigneout");
 		changeContent("auth/signin");
 });
 var fillFavoriteRate = function () {

@@ -12,6 +12,7 @@ var app = {
     currentTaxiId: false,
     serverUrl: 'http://getspot.hu/mobileApp/client/',
     gMapsJs: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCNaLcBKhyLsjKy0v5ppcLt-pebCRp-m4Y&sensor=true',
+    gmapsLoaded: false,
     currentTemplate: false,
     mapHeight: false,
     markerPos: false,
@@ -63,19 +64,18 @@ var app = {
     },
     onOnline: function(e){
         app.receivedEvent('online');
-        jQuery.ajax({
-            url: app.gMapsJs,
-            dataType: 'script',
-            success: function(){
-                if(app.token !== false)
-                    changeContent('order/main');
-            },
-            error: function(){
-            console.log("couldnt download google api error");
-            changeContent('offline');
-            showAlert('Az alkalmazás használatához internet kapcsolat szükséges!');
-            }
-        });
+        if(app.gmapsLoaded == false) {
+            app.gmapsLoaded = true;
+            jQuery.ajax({
+                url: app.gMapsJs,
+                dataType: 'script',
+                error: function(){
+                console.log("couldnt download google api error");
+                changeContent('offline');
+                showAlert('Az alkalmazás használatához internet kapcsolat szükséges!');
+                }
+            });    
+        }
     },
     onBackButton: function(e) {
         app.receivedEvent('backbutton');
@@ -112,17 +112,19 @@ var app = {
         e.preventDefault();
         $("#appMenu").show();
     },
-    onDeviceReady: function() {
+    onDeviceReady: function() {/*
+        navigator.splashscreen.show();
         checkConnection();
+        console.log("source: " + app.gMapsJs);
         jQuery.ajax({
             url: app.gMapsJs,
-            dataType: 'script',
             error: function(){
             console.log("couldnt download google api error");
             changeContent('offline');
             showAlert('Az alkalmazás használatához internet kapcsolat szükséges!');
             }
         });
+        navigator.splashscreen.hide();*/
         var options = { timeout: 1000 * app.locationRefresh , enableHighAccuracy: true, maximumAge: Infinity};
         app.watchId = navigator.geolocation.watchPosition(positionReady, onLocationError, options);
         app.receivedEvent('deviceready');
@@ -167,6 +169,7 @@ var authHandler = function() {
     app.token = window.localStorage.getItem("token");
     console.log("Token is " + app.token);
     if(app.token == null || app.token == 'undefined' || app.token == false || app.token == 'false' ) {
+        console.log('Access from authHandler');
         changeContent('auth/signin');
     }
     else {
@@ -211,6 +214,7 @@ var initAjax = function () {
             console.log(xhr.responseText);
             if( xhr.responseJSON.status == 'REAUTH' ) {
                 app.token = false;
+                console.log('Access from reauth');
                 changeContent('auth/signin');
             } else {
                 app.token = xhr.responseJSON.token;

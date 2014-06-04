@@ -40,6 +40,7 @@ var loginSuccess = function( response ) {
 }
 var signupSuccess = function( response ) {
 	if(response['status']=="OK") {
+		console.log("Access from signupsuccess");
     changeContent('auth/signin');
 	} else {
 		$('#alert').show().html( 'Sikertelen regisztráció: ' + response['message'] );

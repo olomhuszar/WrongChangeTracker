@@ -67,6 +67,7 @@ $('body').on('templateChange',function(event, file) {
 			var prefSize    = $('#preferences').height();console.log('prefSize is : ' + prefSize)
 			var callSize    = $('#fastestProvider').height();console.log('callSize is : ' + callSize)
 			var mapSize     = screenSize-(headerSize+addressSize+prefSize+callSize);
+			if(mapSize>600) mapSize = 600;
 			app.mapHeight = mapSize-1;
 			$('#mapCanvas').css('height',mapSize-1 + 'px');
 			$('#mapCanvas').css('line-height',mapSize-1 + 'px');
@@ -180,7 +181,7 @@ var showMessage = function() {
 var fillPrevAddresses = function() {
 	rows = '';
 	for( var i = 0; i < app.prevRoutes.length; i++) {
-		rows = rows + '<tr id="prevAddress'+i+'"><td class="iterColumn">' + i + '</td><td class="addressColumn">' + app.prevRoutes[i].city + ', ' + app.prevRoutes[i].street + '</td></tr>';
+		rows = rows + '<tr id="'+i+'" class="prevAddressRow"><td class="iterColumn">' + (parseInt(i)+1) + '</td><td class="addressColumn">' + app.prevRoutes[i].city + ', ' + app.prevRoutes[i].street + '</td></tr>';
 	}	
 	$('#prevAddresses').html(rows);
 }

@@ -136,3 +136,13 @@ $('body').on('click','.sendMessage', function( e ){
 	sendRequest('message');
 	$('.recivedMessage').append( '<p class="fromClient">' + $('textarea#myMessage').val() + '</p>');
 });
+$('body').on('click','.prevAddressRow', function( e ){
+	app.customAddress = true;
+	var address = 	$(this).children('.addressColumn').html();
+	jQuery.ajax({
+		url: 'http://maps.googleapis.com/maps/api/geocode/json?address='+address+'&sensor=true&language=hu',
+	    dataType: 'json',
+		success: addressReadyFromChange
+	});
+	changeContent('order/main');
+});

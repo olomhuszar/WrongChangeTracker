@@ -50,7 +50,6 @@ var taxiComing = function( ) {
 	    }
 	});
 	setInverseDetails(data.name, data.licensePlate, data.car, data.rating);
-	$('#inverseRating').raty({ score: parseInt(data.rating), readOnly: true, size: 10, starOff  : 'star-off-small.png',  starOn   : 'star-on-small-inverse.png', starHalf: 'star-half-small-inverse.png'});
 };
 var taxiArrived = function() {
 	var data = app.taxiDatas[app.currentTaxiId];

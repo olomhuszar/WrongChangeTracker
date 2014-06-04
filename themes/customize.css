@@ -432,7 +432,7 @@ div#detailActions {
     border-left: 1px solid #303030;
 }
 #overallRating {
-    margin-left:-35%;
+    margin:0 auto 0 auto;
 }
 
 #acceptedMessage {
@@ -454,13 +454,13 @@ div#detailActions {
     padding-top: 2%;
 }
 #inverseRating {
-    margin-left:15%;
+    margin:0 auto 0 auto;
 }
 #actionRater {
     left:0;
     bottom: 0;
     width: 100%;
-    height: 25%;
+    height: 15%;
     background-color: #303030;
     position: absolute;
 }
@@ -469,14 +469,14 @@ div#detailActions {
     left: 50%;
     float:left;
     height: 100%;
-    margin-top: 5%;
+    margin-top: 10%;
     line-height: 100%;
 }
 #actionRaterButton {
     width: 50%;
     left: 0;
     float:left;
-    margin-top: 5%;
+    margin-top: 10%;
     height: 100%;
     line-height: 100%;
 }
@@ -595,8 +595,12 @@ div.value {
     color: #e31b43;
     width: 65%;
 }
+
 tbody#ratings tr {
     height: 30px;
+}
+tbody#ratings {
+    font-size: 26px;
 }
 tr.greater {
     height: 50px !important;
@@ -781,4 +785,19 @@ div#alert {
     padding: 20px 0 0 0;
     color: #f77992;
     display: none;
+}
+.iterColumn {
+    background: #3e3e3e;
+    width: 15%;
+}
+.addressColumn {
+    background: #303030;
+    text-align: left;
+    width: 85%;
+    padding-left: 10px;
+}
+table#prevAddresses {
+    width: 100%;
+    border-bottom:1px solid #262626;
+    border-spacing: 1px;
 }

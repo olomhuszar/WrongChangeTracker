@@ -15,7 +15,7 @@ function changeContent(file, onSuccess) {
 	console.log('second paramter type is' + typeof(onSuccess));
 	app.currentTemplate = file;
 	var path = file.split("/")[0];
-	if( ( app.token == null || app.token == false || app.token == 'undefined' ) && file != 'auth/signup' ) {
+	if( ( app.token == null || app.token == false || app.token == 'undefined' ) && file != 'auth/signup') {
 		file = 'auth/signin';
 		console.log("Need to sign in, because token is " + app.token);
 	}
@@ -157,16 +157,20 @@ function setDriverInfo( name, license, car ) {
 function setRouteInfo(meter, minute, rating) {
 	var innerHtml = '<div id="routeDistance">'+meter+'m<br />'+minute+' perc</div><div id="routeRating">'+rating+'<br /><div id="overallRating"></div></div>';
 	$('#detail #route').html(innerHtml);
-	$('#overallRating').raty({ score: rating, readOnly: true, size: 10, starOff: 'star-off-small.png',  starOn : 'star-on-small.png',starHalf: 'star-half-small.png'});
+	$('#overallRating').raty({ score: rating, readOnly: true, size: 20,width:130, starOff: 'star-off-small.png',  starOn : 'star-on-small.png',starHalf: 'star-half-small.png'});
 }
 
 function setInverseDetails( name, license, car, rating) {
 	var innerHtml = '<div id="name"><span id="taxiName">'+name+'</span></div><div id="carData"><span id="taxiLicensePlate">'+license+'</span><br /><span id="taxiCarType">'+car+'</span></div><div id="routeRate">'+rating+'</div><div id="inverseRating"></div>';
 	$('#inverseDetails').html(innerHtml);
+	$('#inverseRating').raty({ score: parseInt(rating), readOnly: true, size: 20,width:130, starOff  : 'star-off-small.png',  starOn   : 'star-on-small-inverse.png', starHalf: 'star-half-small-inverse.png'});
 }
 
 function updateMap() {
 	var height = app.mapHeight;
+	if( height == false ) {
+		return;
+	}
 	var width = $(window).width();
 	var lat = app.position.lat;
 	var lng = app.position.lng;
@@ -188,6 +192,7 @@ $('div#nav').on('click',function(){
 $('div#signOut').on('click',function(){
 	app.token = false;
     window.localStorage.setItem("token",app.token);
+    console.log("Access after signout");
 	changeContent('auth/signin');
 	$('#appMenu').hide();
 });
